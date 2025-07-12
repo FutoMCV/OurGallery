@@ -9,13 +9,15 @@ body {
 }
 
 header {
-  padding: 30px;
+  width: 100%;
+  padding: 30px 20px;;
   background-color: #ffb6c1;
   color: white;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
   animation: fadeInDown 1.5s ease forwards;
   position: relative;
   z-index: 2;
+  box-sizing: border-box;
 }
 
 h1 {
