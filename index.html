@@ -8,10 +8,11 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom right, #fff0f5, #ffe4ec);
+      background: radial-gradient(circle, #fff0f5 0%, #ffe4ec 100%);
       color: #333;
       text-align: center;
       overflow-x: hidden;
+      position: relative;
     }
 
     header {
@@ -20,6 +21,8 @@
       color: white;
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       animation: fadeInDown 1.5s ease forwards;
+      position: relative;
+      z-index: 2;
     }
 
     h1 {
@@ -39,19 +42,21 @@
       max-width: 1000px;
       margin: 0 auto;
       animation: fadeIn 2s ease forwards;
+      position: relative;
+      z-index: 2;
     }
 
     .gallery img {
       width: 100%;
       border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      box-shadow: 0 0 15px rgba(255, 182, 193, 0.7);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
       animation: zoomFade 1s ease-in-out;
     }
 
     .gallery img:hover {
       transform: scale(1.1);
-      box-shadow: 0 8px 25px rgba(255,105,180,0.3);
+      box-shadow: 0 0 30px rgba(255,105,180,0.6);
       cursor: pointer;
     }
 
@@ -60,10 +65,32 @@
       background: #ffd6e7;
       font-size: 0.9em;
       animation: fadeInUp 1.5s ease forwards;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Floating Hearts Animation */
-    .heart {
+    .music-control {
+      margin-top: 10px;
+      z-index: 3;
+      position: relative;
+    }
+
+    .music-control button {
+      background-color: #ff69b4;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      cursor: pointer;
+      font-size: 1em;
+      transition: background 0.3s ease;
+    }
+
+    .music-control button:hover {
+      background-color: #ff85c1;
+    }
+
+    .heart, .sparkle {
       position: absolute;
       top: -50px;
       font-size: 24px;
@@ -74,9 +101,20 @@
       z-index: 0;
     }
 
+    .sparkle {
+      color: #fff;
+      font-size: 12px;
+      animation: sparkleFall 6s linear infinite;
+    }
+
     @keyframes fall {
       0% { transform: translateY(0) rotate(0deg); opacity: 1; }
       100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+
+    @keyframes sparkleFall {
+      0% { transform: translateY(0) scale(1); opacity: 1; }
+      100% { transform: translateY(100vh) scale(0.5); opacity: 0; }
     }
 
     @keyframes fadeIn {
@@ -99,7 +137,6 @@
       to { transform: scale(1); opacity: 1; }
     }
 
-    /* Lightbox Styles */
     #lightbox {
       position: fixed;
       top: 0; left: 0;
@@ -121,20 +158,19 @@
 </head>
 <body>
 
-  <!-- Background Music -->
-  <audio autoplay loop hidden>
+  <audio id="bgm" autoplay loop>
     <source src="music/romantis.mp3" type="audio/mpeg">
-    Your browser does not support the audio element.
   </audio>
+  <div class="music-control">
+    <button onclick="toggleMusic()">⏸️ Pause / Play 🎵</button>
+  </div>
 
-  <!-- Lightbox Viewer -->
   <div id="lightbox" onclick="this.style.display='none'">
     <img src="" alt="Preview">
   </div>
 
-  <!-- Floating Hearts -->
   <script>
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 40; i++) {
       let heart = document.createElement("div");
       heart.className = "heart";
       heart.innerHTML = ["💗", "💖", "💕"][Math.floor(Math.random()*3)];
@@ -142,6 +178,31 @@
       heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
       heart.style.fontSize = (Math.random() * 16 + 16) + "px";
       document.body.appendChild(heart);
+    }
+    for (let i = 0; i < 30; i++) {
+      let sparkle = document.createElement("div");
+      sparkle.className = "sparkle";
+      sparkle.innerHTML = "✨";
+      sparkle.style.left = Math.random() * 100 + "vw";
+      sparkle.style.animationDuration = (Math.random() * 4 + 2) + "s";
+      sparkle.style.fontSize = (Math.random() * 8 + 10) + "px";
+      document.body.appendChild(sparkle);
+    }
+
+    function toggleMusic() {
+      const bgm = document.getElementById('bgm');
+      if (bgm.paused) {
+        bgm.play();
+      } else {
+        bgm.pause();
+      }
+    }
+
+    function openLightbox(src) {
+      const lightbox = document.getElementById('lightbox');
+      const img = lightbox.querySelector('img');
+      img.src = src;
+      lightbox.style.display = 'flex';
     }
   </script>
 
@@ -156,16 +217,8 @@
     <img src="img/momen3.jpg" alt="Momen 3" onclick="openLightbox(this.src)">
     <img src="img/momen4.jpg" alt="Momen 4" onclick="openLightbox(this.src)">
     <img src="img/momen5.jpg" alt="Momen 5" onclick="openLightbox(this.src)">
-    <!-- Tambahkan lebih banyak gambar sesuai kebutuhan -->
   </section>
 
-  <script>
-    function openLightbox(src) {
-      const lightbox = document.getElementById('lightbox');
-      const img = lightbox.querySelector('img');
-      img.src = src;
-      lightbox.style.display = 'flex';
-    }
-  </script>
+
 </body>
 </html>
