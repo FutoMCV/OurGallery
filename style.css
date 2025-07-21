@@ -31,6 +31,34 @@ body {
   margin: 0;
 }
 
+.button-container {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.button {
+  background: linear-gradient(90deg, #ff7eb3 0%, #ff758c 100%);
+  color: #fff;
+  border: none;
+  padding: 12px 28px;
+  border-radius: 25px;
+  font-size: 1rem;
+  font-family: 'Poppins', sans-serif;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.3s, transform 0.2s;
+  box-shadow: 0 2px 8px rgba(255, 117, 140, 0.15);
+}
+.button:hover {
+  background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
+  transform: translateY(-2px) scale(1.04);
+}
+.button:active {
+  transform: translateY(0) scale(1);
+}
+
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
