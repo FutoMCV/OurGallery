@@ -1,3 +1,5 @@
+/* style.css */
+
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -12,38 +14,53 @@ header {
   color: white;
   font-family: 'Pacifico', cursive;
   font-size: 2.5rem;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .gallery {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
   gap: 20px;
   padding: 30px 10px;
+  max-width: 1200px;
+  margin: auto;
 }
 
 .photo {
-  flex: 1 1 calc(300px - 20px);
-  max-width: 300px;
   position: relative;
   overflow: hidden;
   border-radius: 20px;
   box-shadow: 0 10px 20px rgba(0,0,0,0.15);
   transition: transform 0.3s ease-in-out;
-  animation: fadeIn 1s ease-in-out;
+  background-color: white;
+}
+
+.photo:hover {
+  transform: scale(1.03);
 }
 
 .photo img {
   width: 100%;
   height: auto;
   display: block;
+  transition: transform 0.5s;
+  cursor: pointer;
+}
+
+.photo img:hover {
+  transform: scale(1.2);
 }
 
 .caption {
   text-align: center;
-  margin-top: 10px;
+  padding: 10px;
   font-style: italic;
   font-weight: 500;
+  background-color: #fff0f5;
+  border-top: 1px solid #ffb6c1;
 }
 
 .popup-text {
@@ -52,6 +69,24 @@ header {
   margin-top: 30px;
   color: #555;
   animation: fadeInUp 1.5s ease;
+  padding: 0 20px;
+}
+
+.music-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #fff0f5;
+  padding: 10px 15px;
+  border-radius: 30px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  cursor: pointer;
+  z-index: 999;
+  transition: background 0.3s;
+}
+
+.music-control:hover {
+  background: #ffcce5;
 }
 
 .floating-heart {
@@ -73,24 +108,7 @@ header {
   }
 }
 
-@keyframes fadeIn {
-  0% { opacity: 0; transform: scale(0.95); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
 @keyframes fadeInUp {
   0% { opacity: 0; transform: translateY(20px); }
   100% { opacity: 1; transform: translateY(0); }
-}
-
-.music-control {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #fff0f5;
-  padding: 10px 15px;
-  border-radius: 30px;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-  cursor: pointer;
-  z-index: 999;
 }
