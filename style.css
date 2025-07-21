@@ -1,5 +1,4 @@
 /* style.css */
-
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -33,30 +32,28 @@ body {
 
 .button-container {
   display: flex;
-  justify-content: center;
   gap: 16px;
+  justify-content: center;
   margin: 24px 0;
 }
 
 .button {
-  background: linear-gradient(90deg, #ff7eb3 0%, #ff758c 100%);
-  color: #fff;
+  background: linear-gradient(to right, #ffb6c1, #ffe4ec);
+  color: #d72660;
   border: none;
-  padding: 12px 28px;
   border-radius: 25px;
+  padding: 10px 28px;
   font-size: 1rem;
   font-family: 'Poppins', sans-serif;
-  cursor: pointer;
   font-weight: 600;
-  transition: background 0.3s, transform 0.2s;
-  box-shadow: 0 2px 8px rgba(255, 117, 140, 0.15);
+  cursor: pointer;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  transition: background 0.3s, color 0.3s;
 }
+
 .button:hover {
-  background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
-  transform: translateY(-2px) scale(1.04);
-}
-.button:active {
-  transform: translateY(0) scale(1);
+  background: #ffcce5;
+  color: #a81d4d;
 }
 
 .gallery {
